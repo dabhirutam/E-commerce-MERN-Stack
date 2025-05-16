@@ -67,40 +67,6 @@ const Sidebar = () => {
                         Sign Up
                     </Nav.Link>
                 </Nav>
-
-                {/* Footer */}
-                <div className="mt-auto pt-4">
-                    <Card className="border-0 shadow-none text-center">
-                        <Card.Body className="p-2">
-                            <Image
-                                src="../assets/img/illustrations/icon-documentation.svg"
-                                className="w-50 mb-2"
-                                alt="sidebar_illustration"
-                            />
-                            <div>
-                                <h6 className="mb-0">Need help?</h6>
-                                <p className="text-muted small mb-0">Please check our docs</p>
-                            </div>
-                        </Card.Body>
-                    </Card>
-                    <Button
-                        variant="dark"
-                        size="sm"
-                        className="w-100 mb-2"
-                        href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard"
-                        target="_blank"
-                    >
-                        Documentation
-                    </Button>
-                    <Button
-                        variant="primary"
-                        size="sm"
-                        className="w-100"
-                        href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree"
-                    >
-                        Upgrade to Pro
-                    </Button>
-                </div>
             </div>
         </div>
     );
