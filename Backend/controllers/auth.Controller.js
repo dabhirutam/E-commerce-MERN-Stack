@@ -16,7 +16,7 @@ const SignUp = async (req, res) => {
         res.status(200).json({ status: true, msg: 'User is created successfully.' });
 
         console.log("User is created successfully.");
-    } catch (error) { console.log("Server Error :- ", error) }
+    } catch (error) { return res.status(500).json({ status: false, msg: "Server error." }) }
 }
 
 const SignIn = async (req, res) => {
@@ -36,7 +36,7 @@ const SignIn = async (req, res) => {
             console.log("'User is logIn successfully.");
         } else return res.status(401).json({ status: false, msg: 'Invalid or expired token' });
 
-    } catch (error) { console.log("Server Error :- ", error) }
+    } catch (error) { return res.status(500).json({ status: false, msg: "Server error." }) }
 }
 
 module.exports = {
