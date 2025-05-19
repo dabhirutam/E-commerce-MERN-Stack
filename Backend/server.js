@@ -3,9 +3,11 @@ const db = require('./config/db.Config');
 const dotenv = require('dotenv');
 const routes = require('./routes/index.Routes');
 const bodyParser = require('body-parser');
+const postgresDB = require('./config/postgresDb');
 
 dotenv.config();
-db();
+// db();
+postgresDB();
 
 const app = express();
 const port = process.env.PORT;

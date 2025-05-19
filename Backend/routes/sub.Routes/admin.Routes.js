@@ -4,6 +4,6 @@ const adminController = require('../../controllers/admin.Controller');
 
 const adminRoutes = express.Router();
 
-adminRoutes.post('/dashboard', adminController);
+adminRoutes.post('/dashboard', adminController.Dashboard);
 
 module.exports = adminRoutes;
