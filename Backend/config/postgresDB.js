@@ -12,4 +12,4 @@ const postgresDB = async () => {
     } catch (error) { console.log("Server Error", error) }
 }
 
-module.exports = postgresDB;
+module.exports = { sequelize, postgresDB };

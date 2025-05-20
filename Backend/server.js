@@ -3,7 +3,7 @@ const db = require('./config/db.Config');
 const dotenv = require('dotenv');
 const routes = require('./routes/index.Routes');
 const bodyParser = require('body-parser');
-const postgresDB = require('./config/postgresDb');
+const { postgresDB } = require('./config/postgresDB');
 
 dotenv.config();
 // db();
@@ -12,7 +12,7 @@ postgresDB();
 const app = express();
 const port = process.env.PORT;
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/', routes);
