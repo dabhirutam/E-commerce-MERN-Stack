@@ -1,26 +1,30 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const { sequelize } = require("../config/postgresDB");
 
-const authSchema = mongoose.Schema({
-    //Required Feilds
+const authModel = sequelize.define('User', {
     username: {
-        type: String,
-        required: true
+        type: DataTypes.TEXT,
+        allowNull: false,
     },
     email: {
-        type: String,
-        required: true
+        type: DataTypes.TEXT,
+        allowNull: false,
     },
     password: {
-        type: String,
-        required: true
+        type: DataTypes.TEXT,
+        allowNull: false,
     },
     role: {
-        type: String,
-        enum: ['administrator', 'admin', 'user'],
-        default: 'user'
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'user',
+        validate: {
+            isIn: [['administrator', 'admin', 'user']],
+        }
     }
-}, { timestamps: true });
-
-const authModel = mongoose.model('users', authSchema);
+}, {
+    tableName: 'users',
+    timestamps: true,
+});
 
 module.exports = authModel;
