@@ -1,14 +1,17 @@
-import Sidebar from "./components/sections/Sidebar";
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import SignUp from './pages/SignUp';
+import SignIn from './pages/SignIN';
 
 function App() {
 
   return (
-    <>
-    <div className="" style={{height: '100dvh', background: '#344767'}}>
-      <Sidebar/>
-    </div>
-      {/* <h1>Welcome to React</h1> */}
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/signin" element={<SignIn/>} />
+      </Routes>
+    </Router>
   )
 }
 

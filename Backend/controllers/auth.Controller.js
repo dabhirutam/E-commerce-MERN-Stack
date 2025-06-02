@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authModel = require('../models/auth.Model');
 
-
 const SignUp = async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -28,19 +27,19 @@ const SignIn = async (req, res) => {
 
         if (!email || !password) return res.status(400).json({ status: false, msg: 'Missing required field' });
 
-        const auth = await authModel.findAll();
+        const rec = await authModel.findAll({where: { email }});
 
-        console.log("AUTH", auth);
-        
+        if (rec.length === 0) return res.status(404).json({ status: false, msg: 'User not found' });
 
-        if (auth.length !== 0) return res.status(404).json({ status: false, msg: 'User not found' });
+        const auth = rec[0].dataValues;       
 
-        if (bcrypt.compare(auth.password, password)) {
+        if (await bcrypt.compare(password, auth.password)) {
             const token = jwt.sign({ id: auth._id, role: auth.role }, 'E-commerce-token');
-            res.status(200).json({ status: true, msg: 'Login successful', token, auth: auth[0] });
+            
+            res.status(200).json({ status: true, msg: 'Login successful', token, auth: auth });
 
             console.log("'User is logIn successfully.");
-        } else return res.status(401).json({ status: false, msg: 'Invalid or expired token' });
+        } else return res.status(403).json({ status: false, msg: 'Incorrect password' });
 
     } catch (error) {
         console.log("Server error", error);

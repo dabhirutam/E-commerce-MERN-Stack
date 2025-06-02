@@ -4,14 +4,14 @@ import './index.css';
 import App from './App.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './assets/css/argon-dashboard.css';
-import './assets/css/argon-dashboard.css.map';
-import './assets/css/argon-dashboard.min.css';
-import './assets/css/nucleo-icons.css';
-import './assets/css/nucleo-svg.css';
+import { Provider } from 'react-redux';
+import Store from './store.js';
 
 createRoot(document.getElementById('root')).render(
+
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <Provider store={Store}>
+      <App />
+    </Provider>
+  </StrictMode>
+);

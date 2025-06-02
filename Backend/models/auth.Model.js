@@ -23,7 +23,6 @@ const authModel = sequelize.define('User', {
         }
     }
 }, {
-    tableName: 'users',
     timestamps: true,
 });
 
