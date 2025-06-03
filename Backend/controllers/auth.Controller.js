@@ -1,12 +1,15 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authModel = require('../models/auth.Model');
+const { sequelize } = require('../config/postgresDB');
 
 const SignUp = async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
         if (!username || !email || !password) return res.status(400).json({ status: false, msg: 'Missing required field' });
+
+        sequelize.sync();
 
         if ((await authModel.findAll({ where: { email } })).length !== 0) return res.status(409).json({ status: false, msg: 'User with this email already exists' });
 

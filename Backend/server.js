@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const routes = require('./routes/index.Routes');
 const bodyParser = require('body-parser');
 const { postgresDB } = require('./config/postgresDB');
+const cors = require('cors');
 
 dotenv.config();
 postgresDB();
@@ -12,6 +13,7 @@ const port = process.env.PORT;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 app.use('/', routes);
 
